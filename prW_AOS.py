@@ -160,6 +160,14 @@ class App(ttkb.Window):
 
 if __name__ == "__main__":
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+            
+    if not os.path.isdir("saves"):
+        print(f"saves/ folder not found in path {os.getcwd()}. Creating it now...")
+        os.makedirs("saves")
+    if not os.path.isdir("pics"):
+        print(f"pics/ folder not found in path {os.getcwd()}. Creating it now...")
+        os.makedirs("pics")
     
     app = App()
     app.mainloop()
+
