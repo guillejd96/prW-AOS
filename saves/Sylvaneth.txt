@@ -1,6 +1,0 @@
-Archiaparecido,Sylvaneth,1,Miniatura
-Guardianes de Ylthari,Sylvaneth,4,Banda
-Espíritu de Durthu,Sylvaneth,1,Miniatura
-Aparecidos arbóreos,Sylvaneth,5,Regimiento
-Brujarrama,Sylvaneth,1,Miniatura
-Aparecidos Feéricos,Sylvaneth,5,Regimiento
