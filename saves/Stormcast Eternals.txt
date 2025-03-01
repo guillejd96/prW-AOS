@@ -1,0 +1,16 @@
+Caballero Arcano,Stormcast Eternals,1,Miniatura
+Vindicadores,Stormcast Eternals,4,Regimiento
+Vindicador Mayor,Stormcast Eternals,1,Miniatura
+Praetor Mayor,Stormcast Eternals,1,Miniatura
+Lord Imperante,Stormcast Eternals,1,Miniatura
+Grifomastín - Lord Imperante,Stormcast Eternals,1,Miniatura
+Buscaverdades de Xandire,Stormcast Eternals,4,Banda
+Carro Azotatormentas,Stormcast Eternals,1,Miniatura
+Praetores de los Forjados,Stormcast Eternals,3,Regimiento
+Gardus Alma de Acero,Stormcast Eternals,1,Miniatura
+Lord Aquilor,Stormcast Eternals,1,Miniatura
+Grifomastines,Stormcast Eternals,6,Regimiento
+Vigilantes,Stormcast Eternals,5,Regimiento
+Caballero Ajusticiador,Stormcast Eternals,1,Miniatura
+Grifomastines - Caballero Ajusticiador,Stormcast Eternals,2,Regimiento
+Vindicadores,Stormcast Eternals,5,Regimiento
