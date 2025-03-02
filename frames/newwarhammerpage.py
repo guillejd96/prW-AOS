@@ -69,7 +69,7 @@ class NewWarhammerPage(ttk.Frame):
         self.type_var.trace("w", lambda *args: self.update_quantity_entry())
 
     def update_quantity_entry(self):
-        if self.type_var.get() == Tipo_WH.MINIATURA.value:
+        if self.type_var.get() == Tipo_WH.MINIATURE.value:
             self.number_entry.config(state='disabled')
             self.number_entry.delete(0, tk.END)
             self.number_entry.insert(0, "1")
