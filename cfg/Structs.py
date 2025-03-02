@@ -2,10 +2,10 @@ from abc import ABC, abstractmethod
 from enum import Enum
 
 class GrandesAlianzas(Enum):
-    ORDEN = "Orden"
-    DESTRUCCION = "Destrucción"
-    MUERTE = "Muerte"
-    CAOS = "Caos"
+    ORDER = "Order"
+    DESTRUCTION = "Destruction"
+    DEATH = "Death"
+    CHAOS = "Chaos"
 
 class Facciones(Enum):
     
@@ -42,12 +42,12 @@ class Facciones(Enum):
     SONS = "Sons of Behemat"
     
     #Scenery - 1
-    SCENOGRAPHY = "Escenografía"
+    SCENOGRAPHY = "Scenography"
     
 class Tipo_WH(Enum):
-    MINIATURA = "Miniatura"
-    REGIMIENTO = "Regimiento"
-    BANDA = "Banda"
+    MINIATURE = "Miniature"
+REGIMENT = "Regiment"
+BAND = "Band"
 
 class Warhammer(ABC):
     @abstractmethod
