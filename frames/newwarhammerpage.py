@@ -45,7 +45,7 @@ class NewWarhammerPage(ttk.Frame):
         self.type_label = ttk.Label(self, text=TYPE_FORM_STRING)
         self.type_label.pack(pady=5)
         self.type_var = tk.StringVar(self)
-        self.type_menu = ttk.OptionMenu(self, self.type_var, EMPTY_STRING, Tipo_WH.MINIATURA.value, Tipo_WH.REGIMIENTO.value, Tipo_WH.BANDA.value)
+        self.type_menu = ttk.OptionMenu(self, self.type_var, EMPTY_STRING, Tipo_WH.MINIATURE.value, Tipo_WH.REGIMENT.value, Tipo_WH.BAND.value)
         self.type_menu.pack(pady=5)
 
         self.number_label = ttk.Label(self, text=NUMBER_FORM_STRING)

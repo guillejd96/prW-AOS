@@ -46,8 +46,8 @@ class Facciones(Enum):
     
 class Tipo_WH(Enum):
     MINIATURE = "Miniature"
-REGIMENT = "Regiment"
-BAND = "Band"
+    REGIMENT = "Regiment"
+    BAND = "Band"
 
 class Warhammer(ABC):
     @abstractmethod
