@@ -75,8 +75,8 @@ class Faction2Page(tk.Frame):
         
     def updateData(self):
         file_path = self.faction_save_path
-        for widget in self.table.winfo_children():
-            widget.destroy()
+        if hasattr(self, 'bottom_frame'):
+            self.bottom_frame.destroy()
             
         # Inicializar listas para almacenar la información de cada fila
         lstNames = []
