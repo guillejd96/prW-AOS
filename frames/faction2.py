@@ -42,7 +42,7 @@ class Faction2Page(tk.Frame):
         if image_path == '':
             image_path = OTHER_FACTIONS_LOGO_PATH
         faction_image = Image.open(image_path)
-        faction_image = self.process_image(image_path,int(faction_image.width * 0.4),int(faction_image.height * 0.4))
+        faction_image = self.process_image(image_path,int(faction_image.width),int(faction_image.height))
         faction_image = faction_image.resize((int(faction_image.width * 0.4), int(faction_image.height * 0.4)), Image.Resampling.LANCZOS)
         faction_photo = ImageTk.PhotoImage(faction_image)
 

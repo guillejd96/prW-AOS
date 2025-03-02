@@ -31,7 +31,7 @@ class MainPage(tk.Frame):
         self.rectangle = None
         """parent.winfo_screenheight() * 0.75"""
         self.bottom_canvas.create_rectangle(0, 0, parent.winfo_screenwidth(), 300, outline="black", width=5)
-        self.bottom_canvas.pack(side="bottom", fill="x",pady=10)
+        self.bottom_canvas.pack(side="bottom", fill="x",pady=5)
 
     def on_image_click(self, text):
         self.controller.show_frame(FACTION_PAGE_STRING,text)
@@ -88,7 +88,7 @@ class MainPage(tk.Frame):
         i = 0
         for text, value in facciones_usadas.items():
             #print(i,": ",text," - ",value)
-            label = tk.Label(self.bottom_canvas, text=text, bg="darkgrey",pady=10)
+            label = tk.Label(self.bottom_canvas, text=text, bg="darkgrey",pady=5)
             label.place(relx=(i + 0.5) / len(facciones_usadas), rely=0.3, anchor="center")
             
             label.bind("<Button-1>", lambda e, text=text: self.on_image_click(text))
@@ -100,7 +100,7 @@ class MainPage(tk.Frame):
             if image_path == "":
                 image_path = OTHER_FACTIONS_LOGO_PATH
                 
-            faction_image = self.process_image(image_path,200,200)
+            faction_image = self.process_image(image_path,150,150)
             faction_photo = ImageTk.PhotoImage(faction_image)
 
             faction_label = tk.Label(self.bottom_canvas, image=faction_photo, bg="darkgrey")

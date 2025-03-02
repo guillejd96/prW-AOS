@@ -49,7 +49,7 @@ PICS_PAGE_STRING = "PicsPage"
 
 #******************* STORMCAST ETERNALS *******************
 
-STORMCAST_LOGO_PATH = "imgs/12.png"
+STORMCAST_LOGO_PATH = "imgs/stormcastlogo.jpg"
 STORMCAST_SAVE_PATH = "saves/Stormcast Eternals.txt"
 
 
@@ -60,7 +60,7 @@ NIGHTHAUNT_LOGO_PATH = "imgs/Nighthaunt_Icon.png"
 SYLVANETH_LOGO_PATH = "imgs/Winterleaf_icon_01.webp"
 GLOOMSPITE_LOGO_PATH = "imgs/goblins.jpg"
 SCEN_LOGO_PATH = "imgs/scen.png"
-OTHER_FACTIONS_LOGO_PATH = "imgs/sigmar.png"
+OTHER_FACTIONS_LOGO_PATH = "imgs/pngwing.com.png"
 KHARADRON_LOGO_PATH = ""
 
 
