@@ -12,19 +12,7 @@ class MainPage(tk.Frame):
         self.canvas.pack()
 
         image_path = MAIN_LOGO_PATH
-        faction_image = Image.open(image_path)
-        faction_image = faction_image.convert("RGBA")
-        datas = faction_image.getdata()
-
-        new_data = []
-        for item in datas:
-            if item[0] > 250 and item[1] > 250 and item[2] > 250:
-                new_data.append((255, 255, 255, 0))
-            else:
-                new_data.append(item)
-
-        faction_image.putdata(new_data)
-        faction_image = faction_image.resize((400, 400), Image.Resampling.LANCZOS)
+        faction_image = self.process_image(image_path,400,400)
         faction_photo = ImageTk.PhotoImage(faction_image)
 
         self.image_label = tk.Label(self.canvas, image=faction_photo)
@@ -34,55 +22,73 @@ class MainPage(tk.Frame):
         self.label = tk.Label(self.canvas, text = WARHAMMER_STRING, font=("Arial", 24))
         self.label.pack(pady=10, padx=10)
         
-        self.faction2_button = tk.Button(self.canvas, text="New Faction", command=lambda: self.controller.show_frame("NewFactionPage"))
+        self.faction2_button = tk.Button(self.canvas, text=NEW_FACTION_STRING, command=lambda: self.controller.show_frame("NewFactionPage"))
         self.faction2_button.pack(pady=10,padx=10)
         
-        self.bottom_canvas = tk.Canvas(parent, width=parent.winfo_screenwidth(), height=200, bg="darkgrey")
+        self.bottom_canvas = tk.Canvas(parent, width=parent.winfo_screenwidth(), height=300, bg="darkgrey")
+        #self.bottom_canvas.bind("<Configure>", self.on_resize)
 
-        self.bottom_canvas.create_rectangle(0, 0, parent.winfo_screenwidth(), 200, outline="black", width=5)
-        self.bottom_canvas.pack(side="bottom", fill="x")
-
-        #self.update_bottom_canvas()
-        
+        self.rectangle = None
+        """parent.winfo_screenheight() * 0.75"""
+        self.bottom_canvas.create_rectangle(0, 0, parent.winfo_screenwidth(), 300, outline="black", width=5)
+        self.bottom_canvas.pack(side="bottom", fill="x",pady=10)
 
     def on_image_click(self, text):
         self.controller.show_frame(FACTION_PAGE_STRING,text)
-        """
-        if text == Facciones.STORMCAST.value:
-            self.controller.show_frame(FACTION_PAGE_STRING, Facciones.STORMCAST.value)
-        elif text == Facciones.SYLVANETH.value:
-            self.controller.show_frame(FACTION_PAGE_STRING, Facciones.SYLVANETH.value)
-        elif text == Facciones.ORRUK.value:
-            self.controller.show_frame(FACTION_PAGE_STRING, Facciones.ORRUK.value)
-        elif text == Facciones.NIGHTHAUNT.value: 
-            self.controller.show_frame(FACTION_PAGE_STRING, Facciones.NIGHTHAUNT.value)
-        elif text == Facciones.GOBLINS.value:
-            self.controller.show_frame(FACTION_PAGE_STRING, Facciones.GOBLINS.value)
-        elif text == Facciones.SCENOGRAPHY.value:
-            self.controller.show_frame(FACTION_PAGE_STRING, Facciones.SCENOGRAPHY.value)
-        """
+        
+    def on_resize(self, event):
+        print("MainPage on resize")
+        print("\tEvent ",event.widget)
+        print("\tEvent details:", event)
+        print("\tEvent attributes:", dir(event)) 
+        self.bottom_canvas.delete("all")
+
+        width = event.width
+        height = event.height
+        if height < 300:
+            height = 300
+        print(f"\t{width}x{height}")
+        self.rectangle = self.bottom_canvas.create_rectangle(
+            0, 0, width, height * 0.75, outline="black", width=5
+        )
         
     def update_bottom_canvas(self):
         print("MainPage - update_bottom_canvas")
+        
+        """
+        self.bottom_canvas.delete("all")
+
+        width = event.width
+        height = event.height
+        if height < 300:
+            height = 300
+        print(f"\t{width}x{height}")
+        self.rectangle = self.bottom_canvas.create_rectangle(
+            0, 0, width, height * 0.75, outline="black", width=5
+        )
+        """
+        
         for widget in self.bottom_canvas.winfo_children():
             widget.destroy()
         # Crear un nuevo diccionario con solo los valores True
         if hasattr(self.controller, 'uso_facciones'):
             facciones_usadas = {key: value for key, value in self.controller.uso_facciones.items() if value}
+            #"""
+            if len(facciones_usadas)==0:
+                self.nodata_label = tk.Label(self.bottom_canvas, text = NO_DATA_ERROR, font=("Arial", 24))
+                self.nodata_label.pack(pady=100, padx=10)
+            #    """
         else:
-            print("ERROR ERROR ERROR")
             facciones_usadas = {
                 Facciones.STORMCAST.value : True
             }
-            self.label = tk.Label(self.bottom_canvas, text = NO_DATA_ERROR, font=("Arial", 24))
-            self.label.pack(pady=10, padx=10)
+            self.nodata_label = tk.Label(self.bottom_canvas, text = NO_DATA_ERROR, font=("Arial", 24))
+            self.nodata_label.pack(pady=10, padx=10)
 
-        #labels_text = [Facciones.STORMCAST.value, Facciones.ORRUK.value, Facciones.NIGHTHAUNT.value, Facciones.SYLVANETH.value, Facciones.GOBLINS.value,Facciones.SCENOGRAPHY.value]
-        
         i = 0
         for text, value in facciones_usadas.items():
             #print(i,": ",text," - ",value)
-            label = tk.Label(self.bottom_canvas, text=text, bg="darkgrey")
+            label = tk.Label(self.bottom_canvas, text=text, bg="darkgrey",pady=10)
             label.place(relx=(i + 0.5) / len(facciones_usadas), rely=0.3, anchor="center")
             
             label.bind("<Button-1>", lambda e, text=text: self.on_image_click(text))
@@ -93,20 +99,8 @@ class MainPage(tk.Frame):
             image_path = self.controller.faction_logo_paths[text][1]
             if image_path == "":
                 image_path = OTHER_FACTIONS_LOGO_PATH
-
-            faction_image = Image.open(image_path)
-            faction_image = faction_image.convert("RGBA")
-            datas = faction_image.getdata()
-
-            new_data = []
-            for item in datas:
-                if item[0] > 200 and item[1] > 200 and item[2] > 200:
-                    new_data.append((255, 255, 255, 0))
-                else:
-                    new_data.append(item)
-
-            faction_image.putdata(new_data)
-            faction_image = faction_image.resize((100, 100), Image.Resampling.LANCZOS)
+                
+            faction_image = self.process_image(image_path,200,200)
             faction_photo = ImageTk.PhotoImage(faction_image)
 
             faction_label = tk.Label(self.bottom_canvas, image=faction_photo, bg="darkgrey")
@@ -122,17 +116,57 @@ class MainPage(tk.Frame):
             
     def show(self, bool):
         if bool:
-            self.canvas.pack(side="top", fill="both", expand=True)
-            self.image_label.pack(side="top", anchor="n", pady=20)
-            self.label.pack(side="top", anchor="n")
-            self.bottom_canvas.pack(side="bottom", fill="x")
+            if hasattr(self, 'canvas'):
+                self.canvas.pack(side="top", fill="both", expand=True)
+            if hasattr(self, 'image_label'):
+                self.image_label.pack(side="top", anchor="n", pady=20)
+            if hasattr(self, 'label'):
+                self.label.pack(side="top", anchor="n")
+            if hasattr(self, 'bottom_canvas'):
+                self.bottom_canvas.pack(side="bottom", fill="x")
+            
+                
             self.controller.title(WARHAMMER_STRING + " - " + MAIN_PAGE_STRING)
             self.update_bottom_canvas()
         else:
-            self.canvas.pack_forget()
-            self.image_label.pack_forget()
-            self.label.pack_forget()
-            self.bottom_canvas.pack_forget()
+            if hasattr(self, 'canvas'):
+                self.canvas.pack_forget()
+            if hasattr(self, 'image_label'):
+                self.image_label.pack_forget()
+            if hasattr(self, 'label'):
+                self.label.pack_forget()
+            if hasattr(self, 'bottom_canvas'):
+                self.bottom_canvas.pack_forget()
+            if hasattr(self, 'nodata_label'):
+                self.nodata_label.destroy()
+            
+    def process_image(self,image_path,width,height):
+        image = Image.open(image_path).convert("RGBA")
+        
+        def is_near_white(pixel):
+            r, g, b = pixel[:3]
+            return r > 240 and g > 240 and b > 240
+
+        datas = image.getdata()
+        new_data = [
+            (255, 255, 255, 0) if is_near_white(item) else item
+            for item in datas
+        ]
+        image.putdata(new_data)
+        
+        original_width, original_height = image.size
+    
+        aspect_ratio = original_width / original_height
+
+        if width / height != aspect_ratio:
+            if width / height > aspect_ratio:
+                width = int(height * aspect_ratio)
+            else:
+                height = int(width / aspect_ratio)    
+            
+        print(f"{image_path} resized from {original_height}x{original_width} to {height}x{width}")
+            
+        return image.resize((width, height), Image.Resampling.LANCZOS)
         
         
     

@@ -100,7 +100,7 @@ class NewWarhammerPage(ttk.Frame):
             return
         
         number = self.number_entry.get()
-        if type.upper() == Tipo_WH.MINIATURA.value.upper():
+        if type.upper() == Tipo_WH.MINIATURE.value.upper():
             number = "1"
         else:
             if number == "":

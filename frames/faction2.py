@@ -42,6 +42,7 @@ class Faction2Page(tk.Frame):
         if image_path == '':
             image_path = OTHER_FACTIONS_LOGO_PATH
         faction_image = Image.open(image_path)
+        faction_image = self.process_image(image_path,int(faction_image.width * 0.4),int(faction_image.height * 0.4))
         faction_image = faction_image.resize((int(faction_image.width * 0.4), int(faction_image.height * 0.4)), Image.Resampling.LANCZOS)
         faction_photo = ImageTk.PhotoImage(faction_image)
 
@@ -114,7 +115,7 @@ class Faction2Page(tk.Frame):
                     row_frame = tk.Frame(col_frame, bg="white", borderwidth=1, relief="solid")
                     row_frame.pack(side="top", fill="x")
                     
-                    if tipo_wh.value != Tipo_WH.MINIATURA.value: 
+                    if tipo_wh.value != Tipo_WH.MINIATURE.value: 
                         name_label = tk.Label(row_frame, text=f"{lstNames[i]} (x{lstQuantities[i]})", bg="white", font=("Arial", 12))
                         name_label.pack(side="left", fill="x")
                     else:
@@ -229,24 +230,6 @@ class Faction2Page(tk.Frame):
             
     def get_faction_info(self, faction):
         return self.controller.faction_logo_paths[faction]
-        """
-        if faction == STORMCAST_STRING:
-            return STORMCAST_STRING, STORMCAST_LOGO_PATH, STORMCAST_SAVE_PATH
-        elif faction == ORRUK_STRING:
-            return ORRUK_STRING, ORRUK_LOGO_PATH, ORRUK_SAVE_PATH
-        elif faction == NIGHTHAUNT_STRING:
-            return NIGHTHAUNT_STRING, NIGHTHAUNT_LOGO_PATH, NIGHTHAUNT_SAVE_PATH
-        elif faction == SYLVANETH_STRING:
-            return SYLVANETH_STRING, SYLVANETH_LOGO_PATH, SYLVANETH_SAVE_PATH
-        elif faction == GLOOMSPITE_STRING:
-            return GLOOMSPITE_STRING, GLOOMSPITE_LOGO_PATH, GLOOMSPITE_SAVE_PATH
-        elif faction == OTHER_FACTIONS_STRING:
-            return OTHER_FACTIONS_STRING, OTHER_FACTIONS_LOGO_PATH, OTHER_FACTIONS_SAVE_PATH
-        elif faction == SCEN_STRING:
-            return SCEN_STRING, SCEN_LOGO_PATH, SCEN_SAVE_PATH
-        else:
-            return NO_DATA_ERROR, NO_DATA_ERROR, NO_DATA_ERROR
-        """
         
     def search_name_online(self,name):
         if not name.strip():
@@ -255,3 +238,31 @@ class Faction2Page(tk.Frame):
         query = query + name.replace('_', ' ').replace('-', ' ')
         url = f"https://www.google.com/search?tbm=isch&q={query}"
         webbrowser.open(url)
+        
+    def process_image(self,image_path,width,height):
+        image = Image.open(image_path).convert("RGBA")
+        
+        def is_near_white(pixel):
+            r, g, b = pixel[:3]
+            return r > 240 and g > 240 and b > 240
+
+        datas = image.getdata()
+        new_data = [
+            (255, 255, 255, 0) if is_near_white(item) else item
+            for item in datas
+        ]
+        image.putdata(new_data)
+        
+        original_width, original_height = image.size
+    
+        aspect_ratio = original_width / original_height
+
+        if width / height != aspect_ratio:
+            if width / height > aspect_ratio:
+                width = int(height * aspect_ratio)
+            else:
+                height = int(width / aspect_ratio)    
+            
+        print(f"{image_path} resized from {original_height}x{original_width} to {height}x{width}")
+            
+        return image.resize((width, height), Image.Resampling.LANCZOS)

@@ -11,6 +11,7 @@ WARHAMMER_LOGO_PATH = "imgs/sigmar.webp"
 # Strings
 WARHAMMER_STRING = "Warhammer Age of Sigmar"
 NEW_STRING = "New"
+NEW_FACTION_STRING = "New Faction"
 CLEAR_STRING = "Clear all"
 OPTIONS_STRING = "Options"
 EXIT_STRING = "Exit"

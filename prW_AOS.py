@@ -41,7 +41,6 @@ class App(ttkb.Window):
         
         self.uso_facciones = {faccion.value: False for faccion in Facciones}
         
-        # Diccionario para mapear las facciones con sus datos
         self.faction_logo_paths = {
             # Orden
             Facciones.CITIES.value: (Facciones.CITIES.value, "", f"saves/{Facciones.CITIES.value}.txt"),

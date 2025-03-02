@@ -80,5 +80,4 @@ class NewFactionPage(tk.Frame):
 
         
     def show(self, bool):
-        print("")
         self.clear_form()
