@@ -43,36 +43,36 @@ class App(ttkb.Window):
         
         self.faction_logo_paths = {
             # Orden
-            Facciones.CITIES.value: (Facciones.CITIES.value, "", f"saves/{Facciones.CITIES.value}.txt"),
-            Facciones.DAUGHTERS.value: (Facciones.DAUGHTERS.value, "", f"saves/{Facciones.DAUGHTERS.value}.txt"),
-            Facciones.FYRESLAYERS.value: (Facciones.FYRESLAYERS.value, "", f"saves/{Facciones.FYRESLAYERS.value}.txt"),
-            Facciones.IDONETH.value: (Facciones.IDONETH.value, "", f"saves/{Facciones.IDONETH.value}.txt"),
+            Facciones.CITIES.value: (Facciones.CITIES.value, CITIES_OF_SIGMAR_LOGO_PATH, f"saves/{Facciones.CITIES.value}.txt"),
+            Facciones.DAUGHTERS.value: (Facciones.DAUGHTERS.value, DAUGHTERS_OF_KHAINE_LOGO_PATH, f"saves/{Facciones.DAUGHTERS.value}.txt"),
+            Facciones.FYRESLAYERS.value: (Facciones.FYRESLAYERS.value, FYRESLAYERS_LOGO_PATH, f"saves/{Facciones.FYRESLAYERS.value}.txt"),
+            Facciones.IDONETH.value: (Facciones.IDONETH.value, IDONETH_LOGO_PATH, f"saves/{Facciones.IDONETH.value}.txt"),
             Facciones.KHARADRON.value: (Facciones.KHARADRON.value, KHARADRON_LOGO_PATH, f"saves/{Facciones.KHARADRON.value}.txt"),
-            Facciones.LUMINETH.value: (Facciones.LUMINETH.value, "", f"saves/{Facciones.LUMINETH.value}.txt"),
-            Facciones.SERAPHON.value: (Facciones.SERAPHON.value, "", f"saves/{Facciones.SERAPHON.value}.txt"),
+            Facciones.LUMINETH.value: (Facciones.LUMINETH.value, LUMINETH_LOGO_PATH, f"saves/{Facciones.LUMINETH.value}.txt"),
+            Facciones.SERAPHON.value: (Facciones.SERAPHON.value, SERAPHON_LOGO_PATH, f"saves/{Facciones.SERAPHON.value}.txt"),
             Facciones.STORMCAST.value: (Facciones.STORMCAST.value, STORMCAST_LOGO_PATH, f"saves/{Facciones.STORMCAST.value}.txt"),
             Facciones.SYLVANETH.value: (Facciones.SYLVANETH.value, SYLVANETH_LOGO_PATH, f"saves/{Facciones.SYLVANETH.value}.txt"),
             
             # Muerte
-            Facciones.FLESH.value: (Facciones.FLESH.value, "", f"saves/{Facciones.FLESH.value}.txt"),
+            Facciones.FLESH.value: (Facciones.FLESH.value, FLESH_EATER_LOGO_PATH, f"saves/{Facciones.FLESH.value}.txt"),
             Facciones.NIGHTHAUNT.value: (Facciones.NIGHTHAUNT.value, NIGHTHAUNT_LOGO_PATH, f"saves/{Facciones.NIGHTHAUNT.value}.txt"),
-            Facciones.OSSIARCH.value: (Facciones.OSSIARCH.value, "", f"saves/{Facciones.OSSIARCH.value}.txt"),
-            Facciones.SOULBLIGHT.value: (Facciones.SOULBLIGHT.value, "", f"saves/{Facciones.SOULBLIGHT.value}.txt"),
+            Facciones.OSSIARCH.value: (Facciones.OSSIARCH.value, OSSIARCH_LOGO_PATH, f"saves/{Facciones.OSSIARCH.value}.txt"),
+            Facciones.SOULBLIGHT.value: (Facciones.SOULBLIGHT.value, SOULBLIGHT_LOGO_PATH, f"saves/{Facciones.SOULBLIGHT.value}.txt"),
             
             # Caos
-            Facciones.KHORNE.value: (Facciones.KHORNE.value, "", f"saves/{Facciones.KHORNE.value}.txt"),
-            Facciones.TZEENTCH.value: (Facciones.TZEENTCH.value, "", f"saves/{Facciones.TZEENTCH.value}.txt"),
-            Facciones.SLAANESH.value: (Facciones.SLAANESH.value, "", f"saves/{Facciones.SLAANESH.value}.txt"),
-            Facciones.NURGLE.value: (Facciones.NURGLE.value, "", f"saves/{Facciones.NURGLE.value}.txt"),
-            Facciones.SKAVEN.value: (Facciones.SKAVEN.value, "", f"saves/{Facciones.SKAVEN.value}.txt"),
-            Facciones.SLAVES.value: (Facciones.SLAVES.value, "", f"saves/{Facciones.SLAVES.value}.txt"),
-            Facciones.BEASTS.value: (Facciones.BEASTS.value, "", f"saves/{Facciones.BEASTS.value}.txt"),
+            Facciones.KHORNE.value: (Facciones.KHORNE.value, KHORNE_LOGO_PATH, f"saves/{Facciones.KHORNE.value}.txt"),
+            Facciones.TZEENTCH.value: (Facciones.TZEENTCH.value, TZEENTCH_LOGO_PATH, f"saves/{Facciones.TZEENTCH.value}.txt"),
+            Facciones.SLAANESH.value: (Facciones.SLAANESH.value, SLAANESH_LOGO_PATH, f"saves/{Facciones.SLAANESH.value}.txt"),
+            Facciones.NURGLE.value: (Facciones.NURGLE.value, NURGLE_LOGO_PATH, f"saves/{Facciones.NURGLE.value}.txt"),
+            Facciones.SKAVEN.value: (Facciones.SKAVEN.value, SKAVEN_LOGO_PATH, f"saves/{Facciones.SKAVEN.value}.txt"),
+            Facciones.SLAVES.value: (Facciones.SLAVES.value, SLAVES_DARKNESS_LOGO_PATH, f"saves/{Facciones.SLAVES.value}.txt"),
+            Facciones.BEASTS.value: (Facciones.BEASTS.value, BEASTS_CHAOS_LOGO_PATH, f"saves/{Facciones.BEASTS.value}.txt"),
             
             # Destrucción
             Facciones.GOBLINS.value: (Facciones.GOBLINS.value, GLOOMSPITE_LOGO_PATH, f"saves/{Facciones.GOBLINS.value}.txt"),
-            Facciones.OGOR.value: (Facciones.OGOR.value, "", f"saves/{Facciones.OGOR.value}.txt"),
+            Facciones.OGOR.value: (Facciones.OGOR.value, OGOR_LOGO_PATH, f"saves/{Facciones.OGOR.value}.txt"),
             Facciones.ORRUK.value: (Facciones.ORRUK.value, ORRUK_LOGO_PATH, f"saves/{Facciones.ORRUK.value}.txt"),
-            Facciones.SONS.value: (Facciones.SONS.value, "", f"saves/{Facciones.SONS.value}.txt"),
+            Facciones.SONS.value: (Facciones.SONS.value, SONS_BEHEMAT_LOGO_PATH, f"saves/{Facciones.SONS.value}.txt"),
             
             # Escenografía
             Facciones.SCENOGRAPHY.value: (Facciones.SCENOGRAPHY.value, SCEN_LOGO_PATH, f"saves/{Facciones.SCENOGRAPHY.value}.txt")
